@@ -1,0 +1,7 @@
+<app-carousel></app-carousel>
+  
+  <div class="row">
+    @for (item of productService.getProducts(); track item.id) {
+    <app-products class="col-md-3 mt-3" [product]="item" (onAddToCart)="addToCart($event)"></app-products>
+    }
+  </div>

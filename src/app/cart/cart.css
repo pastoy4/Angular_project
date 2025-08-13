@@ -1,0 +1,51 @@
+/* cart.css */
+.cart-item {
+  border-bottom: 1px solid #ddd;
+  padding: 15px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cart-summary {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+}
+.cart-item-image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+.form-control.w-25 {
+  width: 25% !important;
+}
+footer {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+}
+
+.modal-content {
+  border-radius: 1rem;
+  padding: 1rem;
+}
+.form-control-underline {
+  border: none;
+  border-bottom: 1px solid #ced4da;
+  border-radius: 0;
+  background-color: transparent;
+  padding-left: 0;
+}
+.form-control-underline:focus {
+  box-shadow: none;
+  border-color: #0d6efd;
+}
+.btn-create-account {
+  background-image: linear-gradient(to right, #000000, #497369);
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 50px;
+  padding: 10px 30px;
+}

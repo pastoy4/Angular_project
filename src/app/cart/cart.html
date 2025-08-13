@@ -1,0 +1,99 @@
+<div class="container my-5">
+  <h2 class="mb-5">Your Cart</h2>
+
+  @if(cartService.getCartItems().length == 0){
+  <div class="col-12 text-center">
+    <h5 class=" text-muted">Your cart is empty!</h5>
+    <a routerLink="/"><i class="bi bi-cart"></i> Shop now</a>
+  </div>
+
+  }
+  @for(item of cartService.getCartItems(); track item.id){
+  <div class="cart-item d-flex justify-content-between align-items-center mb-3">
+    <div class="d-flex align-items-center">
+      <div class="form-check me-3">
+        <input [checked]="item.is_selected" (change)="cartService.selectCartItem(item)" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+      </div>
+      <img [src]="item.image" alt="Product 1 Image" class="cart-item-image rounded me-3">
+      <div>
+        <h5>{{ item.title }}</h5>
+        <p class="text-muted">{{ item.price * item.qty | currency: 'USD' }}</p>
+      </div>
+    </div>
+
+    <div class="d-flex align-items-center">
+      <div class="d-flex align-items-center me-3">
+        <input type="button" value="-" class="btn btn-outline-secondary btn-sm "
+          (click)="cartService.decreaseQty(item)">
+      </div>
+      <div class="d-flex align-items-center">
+        <label for="quantity" style="display: flex; justify-content: center; align-items: center;"
+          class="form-label ms-2 me-2">{{item.qty}}</label>
+        <input type="button" value="+" class="btn btn-outline-secondary btn-sm ms-2 me-3"
+          (click)="cartService.increaseQty(item)">
+      </div>
+      <div>
+        <button type="button" class="btn btn-danger btn-sm" (click)="cartService.removeItem(item)">Remove</button>
+      </div>
+    </div>
+  </div>
+  }
+
+  @if(cartService.getCartItems().length > 0){
+  <div class="cart-summary mt-4 ">
+    <h5>Total Price: {{cartService.getTotal() | currency: 'USD'}}</h5>
+    <button class="btn btn-outline-dark mt-4 w-100" data-bs-toggle="modal" data-bs-target="#registrationModal">Checkout</button>
+  </div>
+  }
+
+</div>
+
+<!-- Start Modal -->
+<body>
+    <div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header border-0 pb-0">
+            <h5 class="modal-title" id="registrationModalLabel">Registration Form</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="name" class="form-label text-secondary">* Name</label>
+                <input type="text" class="form-control form-control-underline" id="name" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label text-secondary">* Email address</label>
+                <input type="email" class="form-control form-control-underline" id="email" required>
+              </div>
+              <div class="mb-3">
+                <label for="country" class="form-label text-secondary">* Country</label>
+                <input type="text" class="form-control form-control-underline" id="country" required>
+              </div>
+              <div class="mb-3">
+                <label for="phone" class="form-label text-secondary">* Phone</label>
+                <input type="tel" class="form-control form-control-underline" id="phone" required>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label text-secondary">* Password</label>
+                <div class="input-group">
+                    <input type="password" class="form-control form-control-underline" id="password" required>
+                    <span class="input-group-text bg-transparent border-0"><i class="fa-solid fa-eye-slash text-secondary"></i></span>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer border-0 pt-0 flex-column">
+            <div class="d-grid gap-2 col-8 mx-auto">
+                <button type="submit" class="btn btn-create-account">CREATE ACCOUNT</button>
+            </div>
+            <p class="mt-3 text-secondary">Already have an account? <a href="#" class="text-decoration-none">Sign in</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+</body>
+<!-- End Modal -->

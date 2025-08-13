@@ -1,0 +1,12 @@
+<div class="card mb-4" style="width: 18rem;">
+  <span class="badge">{{product.category}}</span>
+  <img [src]="product.image" class="card-img-top pro-image" alt="..." routerLink="/product-detail" [queryParams]="{product_id: product.id}">
+  <div class="card-body">
+    <h5 class="card-title product-title" routerLink="/product-detail" [queryParams]="{product_id: product.id}">{{product.title}}</h5>
+    <p class=" product-price"><label style="opacity: 70%; color: blue;">US</label> {{product.price | currency}} |
+      <br><label style="opacity: 70%; color: red;">KHR</label> IN: {{product.price|toKHR:4100:'up'}}
+      <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OUT: {{product.price|toKHR:4100:'down'}}</p>
+    <p class="card-text product-description" [routerLink]="['/product-detail']" [queryParams]="{product_id: product.id}">{{product.description}}</p>
+    <a class="btn btn-outline-dark" (click)="addToCart(product)">Add to cart&nbsp;<i class="bi bi-cart"></i></a>
+  </div>
+</div>

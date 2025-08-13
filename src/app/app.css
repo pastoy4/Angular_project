@@ -1,0 +1,18 @@
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+nav{
+    box-shadow: rgba(33, 35, 38, 0.5) 0px 10px 10px -10px;
+    width: 100%;
+}
+.pointer{
+    cursor: pointer;
+}
+.container-fluid{
+    margin: 0px 50px 0px 50px;
+    font-family: Calibri;
+    font-weight: bold;
+    font-size: 20px;
+}
